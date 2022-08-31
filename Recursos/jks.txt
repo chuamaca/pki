@@ -1,0 +1,29 @@
+***** PARA CREAR CERTIFICADO SQQL CON OPEN SSQL.
+
+
+https://slproweb.com/products/Win32OpenSSL.html
+
+set openssl_conf=C:\Program Files\OpenSSL-Win64\bin\openssl.cfg
+
+openssl req -x509 -days 365 -newkey rsa:2048 -keyout udemy.pem -out udemy.pem
+
+openssl pkcs12 -export -in udemy.pem -inkey udemy.pem -out udemy.pfx
+
+
+--SUGERENCIA CUANDO NO ACEPTA EL CODIGO KEYTOOOL
+set PATH=%PATH%;C:\Program Files\Java\jdk1.8.0_271\bin
+
+
+
+
+OPCION 2:
+keytool -importkeystore -srckeystore udemy.pfx -srcstoretype pkcs12 -destkeystore udemy.jks -deststoretype JKS
+
+
+OPCION 1: 
+keytool -import -srckeystore C:\Program Files\OpenSSL-Win64\bin\udemy.pfx -srcstoretype pkcs12 -destkeystore udemy.jks -deststoretype JKS
+
+
+
+Listar el certificado:
+keytool -list -v -keystore udemy.jks
