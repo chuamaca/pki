@@ -2,11 +2,18 @@ https://slproweb.com/products/Win32OpenSSL.html
 
 set openssl_conf=C:\Program Files\OpenSSL-Win64\bin\openssl.cfg
 
-openssl req -x509 -days 365 -newkey rsa:2048 -keyout udemy.pem -out udemy.pem
-
-openssl pkcs12 -export -in udemy.pem -inkey udemy.pem -out udemy.pfx
+openssl req -x509 -days 365 -newkey rsa:2048 -keyout dcode.pem -out dcode.pem
 
 
+openssl pkcs12 -export -in dcode.pem -inkey dcode.pem -out dcode.pfx
 
-set PATH=%PATH%;C:\Program Files\Java\jdk1.8.0_271\bin
+
+
+set PATH=%PATH%;C:\Program Files\Java\jdk-17\bin
+
+
+//No funciona
+openssl req -x509 -days 365 -newkey rsa:2048 -keyout C:\data\dcode.pem -out C:\data\dcode.pem
+
+openssl req -nodes -x509 -newkey rsa:4096 -keyout server.key -out server.cer -days 365 -subj /CN=*.bioxor.net
 
